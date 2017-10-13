@@ -7,6 +7,20 @@ public class BankAccount extends Account
 	float accountBalance;
 	static float euroConversionRate;
 
+	Loan bankAccountLoan = new Loan(); //composition 
+
+	public BankAccount setFirstName(String firstName)
+	{
+		this.firstName = firstName;
+		return this;
+	}
+
+	public BankAccount setlastName(String lastName)
+	{
+		this.lastName = lastName;
+		return this;
+	}
+
 	public BankAccount()
 	{
 		accountBalance = 0;
@@ -16,15 +30,17 @@ public class BankAccount extends Account
 
 	public BankAccount(int accountNumberP, String accountNameP)
 	{
+
 		accountNumber = accountNumberP;
 		accountName = accountNameP;
+		System.out.println("Bank Account Constructor");
 
 	}
 
 	public BankAccount(int accountNumberP, String accountNameP, float accountFloatP)
 	{
-
 		this(accountNumberP, accountNameP);
+
 		accountBalance = accountFloatP;
 
 	}
@@ -40,6 +56,7 @@ public class BankAccount extends Account
 		System.out.println();
 		System.out.println("The Bank Account Number is " + accountNumber);
 		System.out.println("The Bank Name is " + accountName);
+		System.out.println("loan amount is: " + this.bankAccountLoan.getLoan());
 
 	}
 
@@ -50,33 +67,36 @@ public class BankAccount extends Account
 		System.out.println("Todays Euro Rate is " + BankAccount.euroConversionRate);
 
 	}
-	
+
 	public void displayBalance(String message)
 	{
 		System.out.println();
-		System.out.println(message+":");
+		System.out.println(message + ":");
 		this.displayBalance();
 	}
 
 	public void makeWithDrawal(float ammount)
 	{
-		boolean isWithDrawPosible=false;
+		boolean isWithDrawPosible = false;
 		System.out.println("Actual Balanse:" + this.accountBalance);
-		System.out.println("Trying to withdraw"+ ammount);
-		if(ammount>= this.accountBalance)
+		System.out.println("Trying to withdraw" + ammount);
+
+		if (ammount <= this.accountBalance)
 		{
-			isWithDrawPosible=true;
+			isWithDrawPosible = true;
 		}
-		if(isWithDrawPosible)
+
+		if (isWithDrawPosible)
 		{
 			System.out.println("Witdrawal success.");
+			this.accountBalance -= ammount;
 			System.out.println("Actual Balanse:" + this.accountBalance);
-		}else
+		} else
 		{
 			System.out.println("WithDraw fail , not enought money in the account.");
 		}
 	}
-	
+
 	// a static method to set the euro rate
 	static void setEuroConversionRate(float euroRate)
 	{

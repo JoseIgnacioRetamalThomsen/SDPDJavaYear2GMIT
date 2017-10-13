@@ -12,7 +12,8 @@ public class TestAccount extends Account
 
 	public static void main(String[] args)
 	{
-		BankAccount mariaAccount = new BankAccount(003, "Maria");
+		
+		BankAccount mariaAccount = new BankAccount(003, "Bank Of Ireland");
 		BankAccount pepeA = new BankAccount(002, "Pepe", 150000000000000f);
 		BankAccount valeA = new BankAccount(pepeA);
 		BankAccount starterA = new BankAccount();
@@ -21,7 +22,7 @@ public class TestAccount extends Account
 																// mariaAccount
 
 		BankAccount.setEuroConversionRate(0.12f);
-		
+
 		mariaAccount.display();
 		mariaAccount.displayBalance();
 
@@ -43,10 +44,34 @@ public class TestAccount extends Account
 		System.out.println(mariaAccount.equals(myAccount));
 		System.out.println(mariaAccount.equals(new Integer(23)));
 		System.out.println();
-		
-		
+
 		mariaAccount.displayBalance();
 		mariaAccount.displayBalance("Maria Account is ");
+
+		// cascade method call
+		System.out.println("\ncascade method call:\n");
+		System.out.println(mariaAccount.setFirstName("Maria").setlastName("De las Flores").toString());
+		mariaAccount.setFirstName("Maria").setlastName("De las Flores").display();
+
+		CurrentAccount myAccountTest = new CurrentAccount(777, "naomi", 600, 1000);
+		myAccountTest.setOverDraftLimit(90);
+		myAccountTest.displayBalance();
+		myAccountTest.display();
+		myAccountTest.makeWithDrawal(5);
+
+		StudentCurrentAccount studentAcc = new StudentCurrentAccount(888, "joe", 90, 10, 10);
+		studentAcc.display();
+		studentAcc.makeWithDrawal(10);
+
+		myAccountTest = studentAcc;
+		mariaAccount = studentAcc;
+
+		// StudentCurrentAccount student2 = new CurrentAccount();
+		CurrentAccount student2 = new StudentCurrentAccount();
+		
+		//composition
+		studentAcc.bankAccountLoan.setLoanAmmount(19);
+		studentAcc.display();
 	}
 
 }
