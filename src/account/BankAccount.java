@@ -1,5 +1,7 @@
 package account;
 
+import java.util.Scanner;
+
 public class BankAccount extends Account
 {
 
@@ -9,6 +11,8 @@ public class BankAccount extends Account
 
 	Loan bankAccountLoan = new Loan(); //composition 
 
+	
+	
 	public BankAccount setFirstName(String firstName)
 	{
 		this.firstName = firstName;
@@ -23,9 +27,13 @@ public class BankAccount extends Account
 
 	public BankAccount()
 	{
-		accountBalance = 0;
-		accountNumber = 0;
-		accountName = "NoName";
+		Scanner console = new Scanner(System.in);
+		System.out.print("enter Account name:");
+		this.accountName = console.nextLine();
+		System.out.print("enter account number:");
+		this.accountNumber = console.nextInt();
+		System.out.print("enter Account Balance:");
+		this.accountBalance = console.nextFloat();
 	}
 
 	public BankAccount(int accountNumberP, String accountNameP)
@@ -128,7 +136,8 @@ public class BankAccount extends Account
 
 	public static void main(String[] args)
 	{
-		// TODO Auto-generated method stub
+		BankAccount account = new BankAccount();
+		account.displayBalance();
 
 	}
 

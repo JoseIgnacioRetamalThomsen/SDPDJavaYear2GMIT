@@ -1,5 +1,6 @@
 package account;
 
+
 public class CurrentAccount extends BankAccount
 {
 
@@ -43,6 +44,14 @@ public class CurrentAccount extends BankAccount
 		System.out.println("The OVer Draft limit is :"+ this.overDraftLimit);
 
 	}
+	public void displayBalance()
+	{
+		System.out.println("Current acount");
+		super.display();
+		System.out.println("The OVer Draft limit is :"+ this.overDraftLimit);
+
+	}
+	
 	public static void main(String[] args)
 	{
 		CurrentAccount myAccount = new CurrentAccount(777,"naomi",600,1000);

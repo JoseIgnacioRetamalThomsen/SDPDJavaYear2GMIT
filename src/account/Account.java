@@ -1,5 +1,6 @@
 package account;
 
+
 public abstract class Account
 {
 	int accountNumber;
@@ -9,6 +10,11 @@ public abstract class Account
 	
 	//abstract method signature
 	abstract public void display();
+	
+	public Account()
+	{
+		
+	}
 	
 	@Override
 	public String toString()

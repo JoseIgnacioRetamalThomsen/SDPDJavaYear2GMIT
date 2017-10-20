@@ -72,6 +72,10 @@ public class TestAccount extends Account
 		//composition
 		studentAcc.bankAccountLoan.setLoanAmmount(19);
 		studentAcc.display();
+		
+		//polymorphism at work
+		BankAccount joesCurrentAccount = new CurrentAccount(222, "joe",100.00F , 50.00F);
+		joesCurrentAccount.displayBalance();
 	}
 
 }
