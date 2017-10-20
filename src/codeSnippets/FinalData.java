@@ -1,6 +1,6 @@
 package codeSnippets;
 
-class Value
+class ValueO
 {
 	int value = 1;
 }
@@ -14,8 +14,9 @@ public class FinalData
 	final int int4=(int)(Math.random()*20);
 	static final int int5 = (int)(Math.random()*20);
 	
-	Value val1 = new Value();
-	final Value val2 = new Value();
+	ValueO val1 = new ValueO();
+	final ValueO val2 = new ValueO();
+	int x =0 ;
 	
 	public FinalData()
 	{
