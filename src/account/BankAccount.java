@@ -2,17 +2,17 @@ package account;
 
 import java.util.Scanner;
 
-public class BankAccount extends Account
+public class BankAccount extends Account implements StateSubsidy
 {
 
 	// attributes
 	float accountBalance;
 	static float euroConversionRate;
 
-	Loan bankAccountLoan = new Loan(); //composition 
+	Loan bankAccountLoan = new Loan(); // composition
 
-	
-	
+	Scanner console;
+
 	public BankAccount setFirstName(String firstName)
 	{
 		this.firstName = firstName;
@@ -25,15 +25,20 @@ public class BankAccount extends Account
 		return this;
 	}
 
+	// constructors
 	public BankAccount()
 	{
-		Scanner console = new Scanner(System.in);
+		// create object from console
+		console = new Scanner(System.in);
+
 		System.out.print("enter Account name:");
 		this.accountName = console.nextLine();
 		System.out.print("enter account number:");
 		this.accountNumber = console.nextInt();
 		System.out.print("enter Account Balance:");
 		this.accountBalance = console.nextFloat();
+
+		// console.close();
 	}
 
 	public BankAccount(int accountNumberP, String accountNameP)
@@ -103,6 +108,20 @@ public class BankAccount extends Account
 		{
 			System.out.println("WithDraw fail , not enought money in the account.");
 		}
+	}// makewithdrawal
+
+	public static BankAccount randAccount()
+	{
+		switch ((int) Math.random() * 3)
+		{
+			case 0:
+				return new BankAccount();
+			case 1:
+				return new DebitAccount();
+			case 2:
+				return new CurrentAccount();
+		}
+		return null;
 	}
 
 	// a static method to set the euro rate
@@ -132,13 +151,22 @@ public class BankAccount extends Account
 
 		return isEqual;
 
+	}// equals
+
+	@Override
+	public void addStateSubsidy(float subsidy)
+	{
+		accountBalance += subsidy;
 	}
 
+	
 	public static void main(String[] args)
 	{
 		BankAccount account = new BankAccount();
+		account.addStateSubsidy(STATE_SUBSIY);
 		account.displayBalance();
 
 	}
 
+	
 }

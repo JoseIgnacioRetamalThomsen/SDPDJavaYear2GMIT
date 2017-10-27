@@ -12,7 +12,7 @@ public class TestAccount extends Account
 
 	public static void main(String[] args)
 	{
-		
+/*p
 		BankAccount mariaAccount = new BankAccount(003, "Bank Of Ireland");
 		BankAccount pepeA = new BankAccount(002, "Pepe", 150000000000000f);
 		BankAccount valeA = new BankAccount(pepeA);
@@ -68,14 +68,31 @@ public class TestAccount extends Account
 
 		// StudentCurrentAccount student2 = new CurrentAccount();
 		CurrentAccount student2 = new StudentCurrentAccount();
-		
-		//composition
+
+		// composition
 		studentAcc.bankAccountLoan.setLoanAmmount(19);
 		studentAcc.display();
-		
-		//polymorphism at work
-		BankAccount joesCurrentAccount = new CurrentAccount(222, "joe",100.00F , 50.00F);
+
+		// polymorphism at work
+		BankAccount joesCurrentAccount = new CurrentAccount(222, "joe", 100.00F, 50.00F);
 		joesCurrentAccount.displayBalance();
+*/
+		
+		BankAccount[] accArray = new BankAccount[3];
+		// polymorhism
+		for (int i = 0; i < accArray.length; i++)
+		{
+			accArray[i] = BankAccount.randAccount();
+			//accArray[i] = new DebitAccount();//BankAccount.randAccount();
+			
+		}
+		for (int i = 0; i < accArray.length; i++)
+		{
+			accArray[i].displayBalance();
+		}
+		
+		
 	}
+
 
 }

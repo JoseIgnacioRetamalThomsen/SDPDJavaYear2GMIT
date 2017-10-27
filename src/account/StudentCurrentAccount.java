@@ -1,7 +1,7 @@
 package account;
 
-public class StudentCurrentAccount extends CurrentAccount
-{
+public class StudentCurrentAccount extends CurrentAccount implements StudentStateSubsidy
+{ 
 
 	float studentLoan;
 	
@@ -57,7 +57,16 @@ public class StudentCurrentAccount extends CurrentAccount
 		studentAcc.display();
 		studentAcc.makeWithDrawal(10);
 		
+		studentAcc.addStateSubsidy(STATE_SUBSIY);
+		studentAcc.addStudentStateSubsidy(STUDENT_SUBSIDY);;
 		
 	}
 
+	@Override
+	public void addStudentStateSubsidy(float ST)
+	{
+		accountBalance += ST;
+	}
+
+	
 }
