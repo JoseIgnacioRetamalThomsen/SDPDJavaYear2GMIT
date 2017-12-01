@@ -159,14 +159,72 @@ public class BankAccount extends Account implements StateSubsidy
 		accountBalance += subsidy;
 	}
 
+	public static void displaySubsidy()
+	{
+		System.out.println("The government subsidy for this " + "Bank Accounts is " + STATE_SUBSIDY);
+	}
+
+	@Override
+	public void displayTaxedSubsidy()
+	{
+		System.out.println("The taxed subisidy for is" + "Bank Account " + TAXED_SUBSIDYDEDUCTION);
+	}
+
+	class InterestRate
+	{
+		private int interest;
+
+		public InterestRate(int interestRate)
+		{
+			interest = interestRate;
+		}
+
+		public void seeInterest()
+		{
+			System.out.println("interest rate is " + interest);
+			System.out.println("clas ref is " + this);
+			System.out.println("Outer ref is " + BankAccount.this);
+		}
+	}
+
+	class PrivateAccount
+	{
+		public void privateDetails()
+		{
+			System.out.println("my private account");
+		}
+	}
+
+	PrivateAccount mine = new PrivateAccount()
+	{
+		public void privateDetails()
+		{
+			System.out.println("display my anonymous account details");
+		}
+	};
 	
+	public void displayInnerAnon()
+	{
+		mine.privateDetails();
+	}
+
 	public static void main(String[] args)
 	{
-		BankAccount account = new BankAccount();
-		account.addStateSubsidy(STATE_SUBSIY);
-		account.displayBalance();
+		// BankAccount account = new BankAccount();
+		// account.addStateSubsidy(STATE_SUBSIDY);
+		// account.displayBalance();
+		BankAccount joeAccount = new BankAccount(232, "joe");
+
+		BankAccount.displaySubsidy();
+		StateSubsidy.displaySubsidy();
+		joeAccount.displayTaxedSubsidy();
+
+		BankAccount.InterestRate innerJoe = joeAccount.new InterestRate(10);
+		innerJoe.seeInterest();
+		
+		joeAccount.mine.privateDetails();
+		
 
 	}
 
-	
 }

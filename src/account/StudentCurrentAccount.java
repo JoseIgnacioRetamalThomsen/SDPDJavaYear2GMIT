@@ -57,7 +57,7 @@ public class StudentCurrentAccount extends CurrentAccount implements StudentStat
 		studentAcc.display();
 		studentAcc.makeWithDrawal(10);
 		
-		studentAcc.addStateSubsidy(STATE_SUBSIY);
+		studentAcc.addStateSubsidy(STATE_SUBSIDY);
 		studentAcc.addStudentStateSubsidy(STUDENT_SUBSIDY);;
 		
 	}
